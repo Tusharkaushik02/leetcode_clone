@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
-function Login() {
+function Register() {
+    const[userName,setUserName]=useState("")
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
 
     function submitData(e) {
         e.preventDefault();
-        console.log(email, pass);
+        console.log(email, pass,userName);
         alert("Submitted");
         setEmail("");
         setPass("");
@@ -20,8 +20,18 @@ function Login() {
                 className="bg-white p-8 rounded-2xl shadow-lg w-80"
             >
                 <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-                    Login
+                    Register
                 </h2>
+                <div className="mb-6">
+                    <label className="block mb-1 text-gray-600">User Name</label>
+                    <input
+                        type="text"
+                        placeholder="JIIIDOD"
+                        value={pass}
+                        onChange={(e) => setUserName(e.target.value)}
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+                    />
+                </div>
 
                 <div className="mb-4">
                     <label className="block mb-1 text-gray-600">Email</label>
@@ -51,19 +61,9 @@ function Login() {
                 >
                     Sign In
                 </button>
-
-                <p className="text-sm text-center mt-4 text-gray-600">
-                    Don’t have an account?{" "}
-                    <Link 
-                        to="/register" 
-                        className="text-black font-semibold hover:underline"
-                    >
-                        Register
-                    </Link>
-                </p>
             </form>
         </div>
     );
 }
 
-export default Login;
+export default Register;
