@@ -4,8 +4,9 @@ import Hero from '../components/hero'
 
 function Landing() {
   return (
-    <div><Navbar />
-    <Hero /></div>
+    <div>
+    <Hero />
+    </div>
   )
 }
 

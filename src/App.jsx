@@ -6,9 +6,11 @@ import Landing from './pages/landing';
 import Register from './pages/Register';
 import Problemlist from './pages/pagelist';
 import ProblemPage from './pages/problemPage';
+import Navbar from './components/navbar';
 function App() {
   return (
     <BrowserRouter>
+      <Navbar/>
       <Routes>
         <Route path='/login' element={<Login />}/>
         <Route path='/' element={<Landing />} />

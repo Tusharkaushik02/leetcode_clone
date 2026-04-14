@@ -7,9 +7,9 @@ function Navbar() {
       
       {/* Left side */}
       <div className="flex gap-8">
-        <div>Problems</div>
-        <div>Contest</div>
-        <div>Interview</div>
+        <Link to='/problemList'><button className="cursor-pointer">Problems</button></Link>
+        <Link to='/contest'><button className="cursor-pointer">Contest</button></Link>
+        <Link to='/interview'><button className="cursor-pointer">Interview</button></Link>
       </div>
 
       {/* Right side */}
