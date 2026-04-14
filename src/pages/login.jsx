@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
+    let navigate = useNavigate();
 
     function submitData(e) {
         e.preventDefault();
         console.log(email, pass);
         alert("Submitted");
+        navigate('/dashboard')
         setEmail("");
         setPass("");
     }

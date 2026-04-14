@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
     const[userName,setUserName]=useState("")
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
+    const navigate=useNavigate()
 
     function submitData(e) {
         e.preventDefault();
         console.log(email, pass,userName);
         alert("Submitted");
+        navigate('/dashboard')
         setEmail("");
         setPass("");
     }

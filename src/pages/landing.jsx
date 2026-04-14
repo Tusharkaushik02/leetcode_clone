@@ -4,7 +4,7 @@ import Hero from '../components/hero'
 
 function Landing() {
   return (
-    <div><Navbar />
+    <div>
     <Hero /></div>
   )
 }

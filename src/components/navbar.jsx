@@ -3,13 +3,19 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <div className="flex justify-between items-center p-4 mt-6 text-2xl font-bold">
+    <div className="flex justify-between items-center p-4 mt-2 text-2xl font-bold">
       
       {/* Left side */}
       <div className="flex gap-8">
+        <Link to='/problemlist'>
         <div>Problems</div>
+        </Link>
+        <Link to='/problem'>
         <div>Contest</div>
+        </Link>
+        <Link to='/problem'>
         <div>Interview</div>
+        </Link>
       </div>
 
       {/* Right side */}
