@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router";
+import { useAuth } from '../context/authContext';
 
 function Login() {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
-    let navigate = useNavigate();
+    const navigate = useNavigate();
+    const { login } = useAuth();
 
     function submitData(e) {
         e.preventDefault();
-        console.log(email, pass);
-        alert("Submitted");
-        navigate('/dashboard')
+        // Save user data into auth context
+        login({
+            name: email.split('@')[0], // derive username from email
+            email: email,
+        });
+        navigate('/dashboard');
         setEmail("");
         setPass("");
     }
@@ -56,7 +61,7 @@ function Login() {
                 </button>
 
                 <p className="text-sm text-center mt-4 text-gray-600">
-                    Don’t have an account?{" "}
+                    Don't have an account?{" "}
                     <Link 
                         to="/register" 
                         className="text-black font-semibold hover:underline"

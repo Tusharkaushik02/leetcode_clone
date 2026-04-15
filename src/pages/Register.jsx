@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/authContext';
 
 function Register() {
-    const[userName,setUserName]=useState("")
+    const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
-    const navigate=useNavigate()
+    const navigate = useNavigate();
+    const { login } = useAuth();
 
     function submitData(e) {
         e.preventDefault();
-        console.log(email, pass,userName);
-        alert("Submitted");
-        navigate('/dashboard')
+        // Save user data into auth context
+        login({
+            name: userName,
+            email: email,
+        });
+        navigate('/dashboard');
+        setUserName("");
         setEmail("");
         setPass("");
     }
@@ -29,8 +35,8 @@ function Register() {
                     <label className="block mb-1 text-gray-600">User Name</label>
                     <input
                         type="text"
-                        placeholder="JIIIDOD"
-                        value={pass}
+                        placeholder="Enter your username"
+                        value={userName}
                         onChange={(e) => setUserName(e.target.value)}
                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
                     />
@@ -62,7 +68,7 @@ function Register() {
                     type="submit"
                     className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition duration-200"
                 >
-                    Sign In
+                    Register
                 </button>
             </form>
         </div>

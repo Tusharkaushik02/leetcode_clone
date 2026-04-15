@@ -1,10 +1,12 @@
 import React from 'react'
 import problems from '../dummydata/problemlist'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/authContext'
 
 function Dashboard() {
 
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   const total = problems.length;
   const easy = problems.filter(p => p.difficulty === "Easy").length;
@@ -20,11 +22,11 @@ function Dashboard() {
       {/* HEADER */}
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold text-gray-800">
-          Welcome Back 👋
+          Welcome Back, {user?.name || 'User'} 👋
         </h1>
 
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/problemlist')}
           className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800"
         >
           Go to Problems
@@ -33,8 +35,8 @@ function Dashboard() {
 
       {/* USER CARD */}
       <div className="bg-white p-6 rounded-xl shadow-md mb-6">
-        <h2 className="text-xl font-semibold">Sourav</h2>
-        <p className="text-gray-500">Aspiring Software Engineer</p>
+        <h2 className="text-xl font-semibold">{user?.name || 'User'}</h2>
+        <p className="text-gray-500">{user?.email || 'Aspiring Software Engineer'}</p>
       </div>
 
       {/* STATS */}
@@ -82,7 +84,7 @@ function Dashboard() {
       <div className="grid md:grid-cols-3 gap-6">
 
         <div
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/problemlist')}
           className="cursor-pointer bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition"
         >
           <h2 className="font-semibold text-lg">📚 Practice Problems</h2>
